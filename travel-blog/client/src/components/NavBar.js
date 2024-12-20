@@ -1,68 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import '../styles/NavBar.scss';
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token'); // Check if the user is logged in
+  const token = localStorage.getItem('token');
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
   const handleSignOut = () => {
-    localStorage.removeItem('token'); // Clear token
-    alert('You have been signed out.');
-    navigate('/login'); // Redirect to login page
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
+    <nav className="custom-navbar">
+      <div className="navbar-container">
         <Link className="navbar-brand" to="/">
-          Travel Blog
+          <i className="bi bi-globe-americas"></i> Travel Blog
         </Link>
+        
         <button
-          className="navbar-toggler"
+          className={`navbar-toggler ${!isNavCollapsed ? 'active' : ''}`}
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={() => setIsNavCollapsed(!isNavCollapsed)}
         >
-          <span className="navbar-toggler-icon"></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            {token ? (
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/create">
-                    Create Blog
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <button className="btn btn-link nav-link" onClick={handleSignOut}>
-                    Sign Out
-                  </button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/login">
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/signup">
-                    Sign Up
-                  </Link>
-                </li>
-              </>
-            )}
-          </ul>
+
+        <div className={`navbar-links ${!isNavCollapsed ? 'show' : ''}`}>
+          {token ? (
+            <>
+              <Link to="/" className="nav-link">
+                <i className="bi bi-house"></i> Home
+              </Link>
+              <Link to="/create" className="nav-link">
+                <i className="bi bi-plus-circle"></i> Create Blog
+              </Link>
+              <button className="nav-link sign-out" onClick={handleSignOut}>
+                <i className="bi bi-box-arrow-right"></i> Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="nav-link">
+                <i className="bi bi-box-arrow-in-right"></i> Login
+              </Link>
+              <Link to="/signup" className="nav-link sign-up">
+                <i className="bi bi-person-plus"></i> Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

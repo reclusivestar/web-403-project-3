@@ -1,0 +1,70 @@
+
+.blog-post-form {
+  .hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d') center/cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+
+    .hero-content {
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .form-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
+  }
+
+  .form-label {
+    font-weight: 500;
+    color: #2C3E50;
+  }
+
+  .form-control {
+    border: 1px solid #e1e1e1;
+    padding: 0.8rem;
+    font-size: 1rem;
+    
+    &:focus {
+      box-shadow: none;
+      border-color: #2C3E50;
+    }
+  }
+
+  textarea.form-control {
+    min-height: 200px;
+  }
+
+  .btn-primary {
+    background-color: #2C3E50;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-weight: 500;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+      background-color: darken(#2C3E50, 10%);
+    }
+  }
+
+  .invalid-feedback {
+    font-size: 0.85rem;
+  }
+}

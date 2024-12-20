@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/BlogPostForm.scss'; 
 
 const BlogPostForm = () => {
   const [title, setTitle] = useState('');
@@ -9,7 +10,6 @@ const BlogPostForm = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  // Validate form inputs
   const validateForm = () => {
     const newErrors = {};
     if (!title.trim()) newErrors.title = 'Title is required';
@@ -19,11 +19,9 @@ const BlogPostForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!validateForm()) return; // Do not submit if validation fails
+    if (!validateForm()) return;
 
     try {
       const token = localStorage.getItem('token');
@@ -35,11 +33,11 @@ const BlogPostForm = () => {
       const payload = {
         title,
         content,
-        tags: tags.split(',').map((tag) => tag.trim()), // Convert tags to an array
+        tags: tags.split(',').map((tag) => tag.trim()),
       };
       await axios.post('/api/blogs', payload, config);
       alert('Blog created successfully!');
-      navigate('/'); // Redirect to the home page
+      navigate('/');
     } catch (err) {
       console.error('Error creating blog:', err.response?.data || err);
       alert('Failed to create blog. Please try again.');
@@ -47,58 +45,78 @@ const BlogPostForm = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h1>Create a New Blog Post</h1>
-      <form onSubmit={handleSubmit}>
-        {/* Title */}
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            className={`form-control ${errors.title ? 'is-invalid' : ''}`}
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          {errors.title && <div className="invalid-feedback">{errors.title}</div>}
+    <div className="blog-post-form">
+      {/* Hero Section */}
+      <div className="hero-section mb-5">
+        <div className="hero-content">
+          <h1>Create Your Story</h1>
+          <p>Share your travel experiences with the world</p>
         </div>
+      </div>
 
-        {/* Content */}
-        <div className="mb-3">
-          <label htmlFor="content" className="form-label">
-            Content
-          </label>
-          <textarea
-            id="content"
-            rows="5"
-            className={`form-control ${errors.content ? 'is-invalid' : ''}`}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          ></textarea>
-          {errors.content && <div className="invalid-feedback">{errors.content}</div>}
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <div className="form-card">
+              <form onSubmit={handleSubmit}>
+                {/* Title */}
+                <div className="mb-4">
+                  <label htmlFor="title" className="form-label">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    id="title"
+                    className={`form-control ${errors.title ? 'is-invalid' : ''}`}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Enter your blog title"
+                  />
+                  {errors.title && <div className="invalid-feedback">{errors.title}</div>}
+                </div>
+
+                {/* Content */}
+                <div className="mb-4">
+                  <label htmlFor="content" className="form-label">
+                    Content
+                  </label>
+                  <textarea
+                    id="content"
+                    rows="8"
+                    className={`form-control ${errors.content ? 'is-invalid' : ''}`}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Share your story..."
+                  ></textarea>
+                  {errors.content && <div className="invalid-feedback">{errors.content}</div>}
+                </div>
+
+                {/* Tags */}
+                <div className="mb-4">
+                  <label htmlFor="tags" className="form-label">
+                    Tags
+                  </label>
+                  <input
+                    type="text"
+                    id="tags"
+                    className={`form-control ${errors.tags ? 'is-invalid' : ''}`}
+                    value={tags}
+                    onChange={(e) => setTags(e.target.value)}
+                    placeholder="travel, food, culture (comma-separated)"
+                  />
+                  {errors.tags && <div className="invalid-feedback">{errors.tags}</div>}
+                </div>
+
+                <div className="text-center">
+                  <button type="submit" className="btn btn-primary btn-lg px-5">
+                    Publish Story
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-
-        {/* Tags */}
-        <div className="mb-3">
-          <label htmlFor="tags" className="form-label">
-            Tags (comma-separated)
-          </label>
-          <input
-            type="text"
-            id="tags"
-            className={`form-control ${errors.tags ? 'is-invalid' : ''}`}
-            value={tags}
-            onChange={(e) => setTags(e.target.value)}
-          />
-          {errors.tags && <div className="invalid-feedback">{errors.tags}</div>}
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
