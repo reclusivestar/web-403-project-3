@@ -91,11 +91,13 @@ const BlogDetailScreen = () => {
           Authorization: `Bearer ${token}`,
         },
       };
+
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/blogs/${id}/comments`, 
         { text: comment }, 
         config
       );
+
       setComments(data.comments);
       setComment('');
     } catch (err) {
