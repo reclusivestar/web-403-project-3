@@ -17,7 +17,7 @@ const BlogDetailScreen = () => {
             Authorization: `Bearer ${token}`,
           },
         };
-        const { data } = await axios.get(`/api/blogs/${id}`, config);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/blogs/${id}`, config);
         setBlog(data);
         setComments(data.comments);
       } catch (err) {
@@ -36,7 +36,7 @@ const BlogDetailScreen = () => {
           Authorization: `Bearer ${token}`,
         },
       };
-      const { data } = await axios.post(`/api/blogs/${id}/comments`, { text: comment }, config);
+      const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/blogs/${id}/comments`, { text: comment }, config);
       setComments(data.comments);
       setComment('');
     } catch (err) {

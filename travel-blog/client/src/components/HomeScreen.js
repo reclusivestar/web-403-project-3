@@ -14,7 +14,7 @@ const HomeScreen = () => {
             Authorization: `Bearer ${token}`,
           },
         };
-        const { data } = await axios.get('/api/blogs', config);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/blogs`, config);
         setBlogs(data);
       } catch (err) {
         console.error('Error fetching blogs:', err);

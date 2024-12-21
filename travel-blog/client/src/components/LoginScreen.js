@@ -10,7 +10,7 @@ const LoginScreen = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/api/auth/login', { email, password });
+      const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, { email, password });
       localStorage.setItem('token', data.token); // Save JWT token
       alert('Login successful!');
       navigate('/'); // Redirect to home page

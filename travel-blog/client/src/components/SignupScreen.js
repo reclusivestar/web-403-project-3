@@ -12,7 +12,7 @@ const SignupScreen = () => {
     e.preventDefault();
     try {
       // Send signup data to the backend
-      await axios.post('/api/auth/signup', { username, email, password });
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/signup`, { username, email, password });
       alert('Signup successful! Please log in.');
       navigate('/login'); // Redirect to login page
     } catch (err) {

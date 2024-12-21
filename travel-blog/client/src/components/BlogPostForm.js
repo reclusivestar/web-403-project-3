@@ -37,7 +37,7 @@ const BlogPostForm = () => {
         content,
         tags: tags.split(',').map((tag) => tag.trim()), // Convert tags to an array
       };
-      await axios.post('/api/blogs', payload, config);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/blogs`, payload, config);
       alert('Blog created successfully!');
       navigate('/'); // Redirect to the home page
     } catch (err) {
