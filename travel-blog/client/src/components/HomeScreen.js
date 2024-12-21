@@ -15,12 +15,10 @@ const HomeScreen = () => {
   const [blogs, setBlogs] = useState([]);
   const [featuredBlogs, setFeaturedBlogs] = useState([]);
 
-  // add blog images function here
   const getImageForBlog = (blog) => {
     if (blog.title.toLowerCase().includes('food')) return defaultImages.food;
     if (blog.title.toLowerCase().includes('culture')) return defaultImages.culture;
     if (blog.title.toLowerCase().includes('travel')) return defaultImages.travel;
-    // choose one from default images
     return defaultImages.default[Math.floor(Math.random() * defaultImages.default.length)];
   };
 
@@ -33,7 +31,7 @@ const HomeScreen = () => {
             Authorization: `Bearer ${token}`,
           },
         };
-        const { data } = await axios.get('/api/blogs', config);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/blogs`, config);
         setBlogs(data);
         setFeaturedBlogs(data.slice(0, 3));
       } catch (err) {

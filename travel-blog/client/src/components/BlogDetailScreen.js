@@ -9,7 +9,6 @@ const BlogDetailScreen = () => {
   const [blog, setBlog] = useState(null);
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
-  // get current user
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState('');
   const [editedContent, setEditedContent] = useState('');
@@ -27,7 +26,7 @@ const BlogDetailScreen = () => {
             Authorization: `Bearer ${token}`,
           },
         };
-        const { data } = await axios.get(`/api/blogs/${id}`, config);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/blogs/${id}`, config);
         setBlog(data);
         setComments(data.comments);
         setEditedTitle(data.title);
@@ -49,7 +48,7 @@ const BlogDetailScreen = () => {
         },
       };
       const { data } = await axios.put(
-        `/api/blogs/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/blogs/${id}`,
         {
           title: editedTitle,
           content: editedContent,
@@ -72,7 +71,7 @@ const BlogDetailScreen = () => {
         },
       };
       const { data } = await axios.put(
-        `/api/blogs/${id}/comments/${commentId}`,
+        `${process.env.REACT_APP_API_URL}/api/blogs/${id}/comments/${commentId}`,
         { text: editedCommentText },
         config
       );
@@ -92,7 +91,11 @@ const BlogDetailScreen = () => {
           Authorization: `Bearer ${token}`,
         },
       };
-      const { data } = await axios.post(`/api/blogs/${id}/comments`, { text: comment }, config);
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/blogs/${id}/comments`, 
+        { text: comment }, 
+        config
+      );
       setComments(data.comments);
       setComment('');
     } catch (err) {
@@ -100,7 +103,6 @@ const BlogDetailScreen = () => {
     }
   };
 
-  // add delete comment handle function
   const handleDeleteComment = async (commentId) => {
     try {
       const token = localStorage.getItem('token');
@@ -109,14 +111,16 @@ const BlogDetailScreen = () => {
           Authorization: `Bearer ${token}`,
         },
       };
-      const { data } = await axios.delete(`/api/blogs/${id}/comments/${commentId}`, config);
+      const { data } = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/blogs/${id}/comments/${commentId}`, 
+        config
+      );
       setComments(data.comments);
     } catch (err) {
       console.error('Error deleting comment:', err);
     }
   };
 
-  //delete post and return to main page
   const handleDeletePost = async () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
@@ -126,7 +130,7 @@ const BlogDetailScreen = () => {
             Authorization: `Bearer ${token}`,
           },
         };
-        await axios.delete(`/api/blogs/${id}`, config);
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/blogs/${id}`, config);
         navigate('/'); 
       } catch (err) {
         console.error('Error deleting post:', err);

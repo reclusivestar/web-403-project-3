@@ -14,7 +14,7 @@ const SignupScreen = () => {
    e.preventDefault();
    setIsLoading(true);
    try {
-     await axios.post('/api/auth/signup', { username, email, password });
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/signup`, { username, email, password });
      alert('Signup successful! Please log in.');
      navigate('/login');
    } catch (err) {
