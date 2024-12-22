@@ -112,7 +112,7 @@ router.delete('/:id', async (req, res) => {
       return res.status(403).json({ error: 'Access denied' });
     }
 
-    await blog.remove();
+    await Blog.deleteOne({ _id: req.params.id });
     res.status(200).json({ message: 'Blog deleted successfully' });
   } catch (err) {
     console.error('Error deleting blog:', err);
@@ -145,7 +145,7 @@ router.delete('/:id/comments/:commentId', async (req, res) => {
     }
 
     // Remove the comment
-    comment.remove();
+    blog.comments.pull(commentId);
     await blog.save();
 
     res.status(200).json(blog);
@@ -155,4 +155,48 @@ router.delete('/:id/comments/:commentId', async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+    if (blog.author !== req.user.username) {
+      return res.status(403).json({ error: 'Not authorized' });
+    }
+    
+    blog.title = req.body.title;
+    blog.content = req.body.content;
+    await blog.save();
+    
+    res.json(blog);
+  } catch (err) {
+    res.status(500).json({ error: 'Error updating blog' });
+  }
+});
+
+router.put('/:id/comments/:commentId', async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+    
+    const comment = blog.comments.id(req.params.commentId);
+    if (!comment) {
+      return res.status(404).json({ error: 'Comment not found' });
+    }
+    
+    if (comment.username !== req.user.username) {
+      return res.status(403).json({ error: 'Not authorized' });
+    }
+    
+    comment.text = req.body.text;
+    await blog.save();
+    
+    res.json(blog);
+  } catch (err) {
+    res.status(500).json({ error: 'Error updating comment' });
+  }
+});
 module.exports = router;

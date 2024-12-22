@@ -1,0 +1,106 @@
+.signup-screen {
+    min-height: 100vh;
+    background: #f8f9fa;
+  
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      margin-bottom: -100px;
+  
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+  
+      p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+    }
+  
+    .signup-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      margin-top: 100px;
+  
+      h2 {
+        color: #2C3E50;
+        font-weight: 600;
+      }
+  
+      .form-label {
+        color: #2C3E50;
+        font-weight: 500;
+      }
+  
+      .input-group {
+        .input-group-text {
+          background: white;
+          border-right: none;
+        }
+  
+        .form-control {
+          border-left: none;
+          padding-left: 0;
+  
+          &:focus {
+            box-shadow: none;
+            border-color: #ced4da;
+          }
+        }
+      }
+  
+      .btn-primary {
+        padding: 0.8rem;
+        font-weight: 500;
+        background-color: #2C3E50;
+        border: none;
+        transition: transform 0.2s;
+  
+        &:hover:not(:disabled) {
+          transform: translateY(-2px);
+          background-color: darken(#2C3E50, 10%);
+        }
+  
+        &:disabled {
+          background-color: lighten(#2C3E50, 20%);
+        }
+      }
+  
+      a {
+        color: #2C3E50;
+        text-decoration: none;
+        font-weight: 500;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 200px;
+        margin-bottom: -50px;
+  
+        h1 {
+          font-size: 2rem;
+        }
+      }
+  
+      .signup-card {
+        margin: 50px 1rem 0;
+        padding: 1.5rem;
+      }
+    }
+  }

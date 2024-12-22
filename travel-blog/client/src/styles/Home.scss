@@ -1,0 +1,93 @@
+// styles/Home.scss
+
+// variable
+$primary-color: #2C3E50;
+$secondary-color: #E74C3C;
+$light-gray: #ECF0F1;
+$text-color: #34495E;
+
+// mixin
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Hero section
+.hero-section {
+  position: relative;
+  height: 80vh;
+  @include flex-center;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url('../assets/images/hero-bg.jpg') center/cover;
+  color: white;
+  text-align: center;
+  
+  &__content {
+    max-width: 800px;
+    padding: 0 20px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    width: 100%;
+    display: block;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    display: block;
+    width: 100%;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+}
+
+// Featured section
+.featured-section {
+  padding: 4rem 0;
+  background-color: $light-gray;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: $primary-color;
+  }
+}
+
+// Blog cards
+.blog-grid {
+  margin-top: 2rem;
+  
+  .blog-card {
+    border: none;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    &__image {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    &__content {
+      padding: 1.5rem;
+    }
+
+    &__title {
+      color: $primary-color;
+      margin-bottom: 1rem;
+    }
+
+    &__meta {
+      color: #666;
+      font-size: 0.9rem;
+    }
+  }
+}
