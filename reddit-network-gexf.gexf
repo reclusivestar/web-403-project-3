@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http:///www.gexf.net/1.1draft/viz" version="1.2">
+    <meta lastmodifieddate="2025-03-29">
+        <creator>Claude</creator>
+        <description>Reddit主题网络分析示例</description>
+    </meta>
+    <graph defaultedgetype="undirected">
+        <attributes class="node">
+            <attribute id="0" title="category" type="string"/>
+            <attribute id="1" title="subscribers" type="integer"/>
+            <attribute id="2" title="engagement_rate" type="float"/>
+            <attribute id="3" title="avg_upvotes" type="integer"/>
+        </attributes>
+        <nodes>
+            <!-- 技术类 -->
+            <node id="programming" label="r/programming">
+                <attvalues>
+                    <attvalue for="0" value="Technology"/>
+                    <attvalue for="1" value="4200000"/>
+                    <attvalue for="2" value="0.12"/>
+                    <attvalue for="3" value="3500"/>
+                </attvalues>
+                <viz:color r="51" g="153" b="255"/>
+                <viz:size value="25.0"/>
+                <viz:position x="0" y="0"/>
+            </node>
+            <node id="python" label="r/python">
+                <attvalues>
+                    <attvalue for="0" value="Technology"/>
+                    <attvalue for="1" value="1200000"/>
+                    <attvalue for="2" value="0.15"/>
+                    <attvalue for="3" value="2800"/>
+                </attvalues>
+                <viz:color r="51" g="153" b="255"/>
+                <viz:size value="18.0"/>
+                <viz:position x="50" y="80"/>
+            </node>
+            <node id="webdev" label="r/webdev">
+                <attvalues>
+                    <attvalue for="0" value="Technology"/>
+                    <attvalue for="1" value="980000"/>
+                    <attvalue for="2" value="0.10"/>
+                    <attvalue for="3" value="1500"/>
+                </attvalues>
+                <viz:color r="51" g="153" b="255"/>
+                <viz:size value="15.0"/>
+                <viz:position x="-70" y="60"/>
+            </node>
+            <node id="javascript" label="r/javascript">
+                <attvalues>
+                    <attvalue for="0" value="Technology"/>
+                    <attvalue for="1" value="750000"/>
+                    <attvalue for="2" value="0.09"/>
+                    <attvalue for="3" value="1200"/>
+                </attvalues>
+                <viz:color r="51" g="153" b="255"/>
+                <viz:size value="12.0"/>
+                <viz:position x="-120" y="40"/>
+            </node>
+            
+            <!-- 科学类 -->
+            <node id="science" label="r/science">
+                <attvalues>
+                    <attvalue for="0" value="Science"/>
+                    <attvalue for="1" value="29000000"/>
+                    <attvalue for="2" value="0.08"/>
+                    <attvalue for="3" value="25000"/>
+                </attvalues>
+                <viz:color r="255" g="102" b="102"/>
+                <viz:size value="30.0"/>
+                <viz:position x="200" y="-150"/>
+            </node>
+            <node id="physics" label="r/physics">
+                <attvalues>
+                    <attvalue for="0" value="Science"/>
+                    <attvalue for="1" value="2100000"/>
+                    <attvalue for="2" value="0.06"/>
+                    <attvalue for="3" value="4500"/>
+                </attvalues>
+                <viz:color r="255" g="102" b="102"/>
+                <viz:size value="17.0"/>
+                <viz:position x="250" y="-100"/>
+            </node>
+            <node id="astronomy" label="r/astronomy">
+                <attvalues>
+                    <attvalue for="0" value="Science"/>
+                    <attvalue for="1" value="1800000"/>
+                    <attvalue for="2" value="0.11"/>
+                    <attvalue for="3" value="5200"/>
+                </attvalues>
+                <viz:color r="255" g="102" b="102"/>
+                <viz:size value="16.0"/>
+                <viz:position x="180" y="-220"/>
+            </node>
+            
+            <!-- 娱乐类 -->
+            <node id="gaming" label="r/gaming">
+                <attvalues>
+                    <attvalue for="0" value="Entertainment"/>
+                    <attvalue for="1" value="34000000"/>
+                    <attvalue for="2" value="0.25"/>
+                    <attvalue for="3" value="45000"/>
+                </attvalues>
+                <viz:color r="153" g="51" b="255"/>
+                <viz:size value="35.0"/>
+                <viz:position x="-250" y="-50"/>
+            </node>
+            <node id="movies" label="r/movies">
+                <attvalues>
+                    <attvalue for="0" value="Entertainment"/>
+                    <attvalue for="1" value="28000000"/>
+                    <attvalue for="2" value="0.18"/>
+                    <attvalue for="3" value="30000"/>
+                </attvalues>
+                <viz:color r="153" g="51" b="255"/>
+                <viz:size value="30.0"/>
+                <viz:position x="-200" y="-150"/>
+            </node>
+            <node id="television" label="r/television">
+                <attvalues>
+                    <attvalue for="0" value="Entertainment"/>
+                    <attvalue for="1" value="17000000"/>
+                    <attvalue for="2" value="0.15"/>
+                    <attvalue for="3" value="22000"/>
+                </attvalues>
+                <viz:color r="153" g="51" b="255"/>
+                <viz:size value="25.0"/>
+                <viz:position x="-270" y="-170"/>
+            </node>
+            
+            <!-- 知识类 -->
+            <node id="dataisbeautiful" label="r/dataisbeautiful">
+                <attvalues>
+                    <attvalue for="0" value="Knowledge"/>
+                    <attvalue for="1" value="18000000"/>
+                    <attvalue for="2" value="0.17"/>
+                    <attvalue for="3" value="25000"/>
+                </attvalues>
+                <viz:color r="102" g="204" b="153"/>
+                <viz:size value="28.0"/>
+                <viz:position x="150" y="120"/>
+            </node>
+            <node id="explainlikeimfive" label="r/explainlikeimfive">
+                <attvalues>
+                    <attvalue for="0" value="Knowledge"/>
+                    <attvalue for="1" value="22000000"/>
+                    <attvalue for="2" value="0.22"/>
+                    <attvalue for="3" value="18000"/>
+                </attvalues>
+                <viz:color r="102" g="204" b="153"/>
+                <viz:size value="27.0"/>
+                <viz:position x="100" y="200"/>
+            </node>
+            <node id="todayilearned" label="r/todayilearned">
+                <attvalues>
+                    <attvalue for="0" value="Knowledge"/>
+                    <attvalue for="1" value="27000000"/>
+                    <attvalue for="2" value="0.19"/>
+                    <attvalue for="3" value="28000"/>
+                </attvalues>
+                <viz:color r="102" g="204" b="153"/>
+                <viz:size value="30.0"/>
+                <viz:position x="200" y="180"/>
+            </node>
+            
+            <!-- 生活类 -->
+            <node id="fitness" label="r/fitness">
+                <attvalues>
+                    <attvalue for="0" value="Lifestyle"/>
+                    <attvalue for="1" value="8700000"/>
+                    <attvalue for="2" value="0.14"/>
+                    <attvalue for="3" value="5000"/>
+                </attvalues>
+                <viz:color r="255" g="153" b="51"/>
+                <viz:size value="20.0"/>
+                <viz:position x="-180" y="150"/>
+            </node>
+            <node id="food" label="r/food">
+                <attvalues>
+                    <attvalue for="0" value="Lifestyle"/>
+                    <attvalue for="1" value="22000000"/>
+                    <attvalue for="2" value="0.21"/>
+                    <attvalue for="3" value="15000"/>
+                </attvalues>
+                <viz:color r="255" g="153" b="51"/>
+                <viz:size value="25.0"/>
+                <viz:position x="-120" y="220"/>
+            </node>
+            <node id="travel" label="r/travel">
+                <attvalues>
+                    <attvalue for="0" value="Lifestyle"/>
+                    <attvalue for="1" value="7300000"/>
+                    <attvalue for="2" value="0.18"/>
+                    <attvalue for="3" value="12000"/>
+                </attvalues>
+                <viz:color r="255" g="153" b="51"/>
+                <viz:size value="18.0"/>
+                <viz:position x="-220" y="200"/>
+            </node>
+        </nodes>
+        <edges>
+            <!-- 技术类内部连接 -->
+            <edge id="0" source="programming" target="python" weight="0.8"/>
+            <edge id="1" source="programming" target="webdev" weight="0.7"/>
+            <edge id="2" source="programming" target="javascript" weight="0.65"/>
+            <edge id="3" source="python" target="javascript" weight="0.4"/>
+            <edge id="4" source="webdev" target="javascript" weight="0.9"/>
+            
+            <!-- 科学类内部连接 -->
+            <edge id="5" source="science" target="physics" weight="0.75"/>
+            <edge id="6" source="science" target="astronomy" weight="0.7"/>
+            <edge id="7" source="physics" target="astronomy" weight="0.85"/>
+            
+            <!-- 娱乐类内部连接 -->
+            <edge id="8" source="gaming" target="movies" weight="0.45"/>
+            <edge id="9" source="movies" target="television" weight="0.85"/>
+            
+            <!-- 知识类内部连接 -->
+            <edge id="10" source="dataisbeautiful" target="explainlikeimfive" weight="0.6"/>
+            <edge id="11" source="dataisbeautiful" target="todayilearned" weight="0.65"/>
+            <edge id="12" source="explainlikeimfive" target="todayilearned" weight="0.7"/>
+            
+            <!-- 生活类内部连接 -->
+            <edge id="13" source="fitness" target="food" weight="0.5"/>
+            <edge id="14" source="food" target="travel" weight="0.6"/>
+            <edge id="15" source="fitness" target="travel" weight="0.45"/>
+            
+            <!-- 跨类别连接 -->
+            <edge id="16" source="programming" target="dataisbeautiful" weight="0.6"/>
+            <edge id="17" source="science" target="explainlikeimfive" weight="0.55"/>
+            <edge id="18" source="science" target="dataisbeautiful" weight="0.5"/>
+            <edge id="19" source="gaming" target="programming" weight="0.3"/>
+            <edge id="20" source="movies" target="todayilearned" weight="0.35"/>
+            <edge id="21" source="fitness" target="science" weight="0.4"/>
+            <edge id="22" source="travel" target="astronomy" weight="0.2"/>
+            <edge id="23" source="physics" target="dataisbeautiful" weight="0.45"/>
+            <edge id="24" source="food" target="todayilearned" weight="0.25"/>
+        </edges>
+    </graph>
+</gexf>
